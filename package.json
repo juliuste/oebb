@@ -1,0 +1,49 @@
+{
+	"name": "oebb",
+	"description": "Austrian Federal Railways (ÖBB) API client.",
+	"version": "0.0.0",
+	"keywords": [
+		"oebb",
+		"öbb",
+		"österreichische",
+		"bundesbahn",
+		"bahn",
+		"austria",
+		"train",
+		"railway",
+		"api",
+		"client"
+	],
+	"author": "Julius Tens <mail@juliustens.de>",
+	"homepage": "https://github.com/juliuste/oebb",
+	"repository": "juliuste/oebb",
+	"bugs": "https://github.com/juliuste/oebb/issues",
+	"main": "./index.js",
+	"files": [
+		"./index.js",
+		"./lib"
+	],
+	"dependencies": {
+		"cookie": "^0.3.1",
+		"got": "^7.1.0",
+		"lodash.isnumber": "^3.0.3",
+		"lodash.isstring": "^4.0.1",
+		"lodash.merge": "^4.6.0",
+		"p-retry": "^1.0.0",
+		"randomatic": "^2.0.0"
+	},
+	"devDependencies": {
+		"lodash.isdate": "^4.0.1",
+		"lodash.isobject": "^3.0.2",
+		"moment-timezone": "^0.5.13",
+		"tape": "^4.7.0"
+	},
+	"scripts": {
+		"test": "node test.js",
+		"prepublish": "npm test"
+	},
+	"engines": {
+		"node": ">=6"
+	},
+	"license": "MIT"
+}
