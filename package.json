@@ -40,7 +40,7 @@
 	},
 	"scripts": {
 		"test": "node test.js",
-		"prepublish": "npm test"
+		"prepare": "npm test"
 	},
 	"engines": {
 		"node": ">=8"
