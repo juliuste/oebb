@@ -29,7 +29,7 @@
 		"lodash.isnumber": "^3.0.3",
 		"lodash.isstring": "^4.0.1",
 		"lodash.merge": "^4.6.0",
-		"p-retry": "^1.0.0",
+		"p-retry": "^2.0.0",
 		"randomatic": "^2.0.0"
 	},
 	"devDependencies": {
