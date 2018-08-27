@@ -2,9 +2,9 @@
 
 const tape = require('tape')
 const oebb = require('./index')
-const isString = require('lodash.isstring')
-const isDate = require('lodash.isdate')
-const isObject = require('lodash.isobject')
+const isString = require('lodash/isString')
+const isDate = require('lodash/isDate')
+const isObject = require('lodash/isObject')
 const moment = require('moment-timezone')
 
 // journeys("8000261", "8103000").then(console.log).catch(console.error)
