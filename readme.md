@@ -8,7 +8,6 @@ Client for the [Austrian Federal Railways (ÖBB)](https://oebb.at/) API client. 
 [![Build Status](https://travis-ci.org/juliuste/oebb.svg?branch=master)](https://travis-ci.org/juliuste/oebb)
 [![Greenkeeper badge](https://badges.greenkeeper.io/juliuste/oebb.svg)](https://greenkeeper.io/)
 [![dependency status](https://img.shields.io/david/juliuste/oebb.svg)](https://david-dm.org/juliuste/oebb)
-[![dev dependency status](https://img.shields.io/david/dev/juliuste/oebb.svg)](https://david-dm.org/juliuste/oebb#info=devDependencies)
 [![license](https://img.shields.io/github/license/juliuste/oebb.svg?style=flat)](LICENSE)
 [![chat on gitter](https://badges.gitter.im/juliuste.svg)](https://gitter.im/juliuste)
 
