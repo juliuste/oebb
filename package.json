@@ -46,7 +46,8 @@
 		"eslint-plugin-promise": "^4.0.1",
 		"eslint-plugin-standard": "^4.0.0",
 		"moment-timezone": "^0.5.21",
-		"tape": "^4.9.1"
+		"tape": "^4.9.1",
+		"tape-promise": "^4.0.0"
 	},
 	"engines": {
 		"node": ">=8"

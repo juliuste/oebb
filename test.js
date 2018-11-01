@@ -1,11 +1,13 @@
 'use strict'
 
-const tape = require('tape')
-const oebb = require('.')
+const tapeWithoutPromise = require('tape')
+const addPromiseSupport = require('tape-promise').default
+const tape = addPromiseSupport(tapeWithoutPromise)
 const isString = require('lodash/isString')
 const isDate = require('lodash/isDate')
 const isObject = require('lodash/isObject')
 const moment = require('moment-timezone')
+const oebb = require('.')
 
 // journeys("8000261", "8103000").then(console.log).catch(console.error)
 
