@@ -1,28 +1,35 @@
 {
 	"name": "oebb",
-	"description": "Austrian Federal Railways (ÖBB) API client.",
 	"version": "0.0.2",
+	"description": "Austrian Federal Railways (ÖBB) API client.",
 	"keywords": [
-		"oebb",
-		"öbb",
-		"österreichische",
-		"bundesbahn",
-		"bahn",
-		"austria",
-		"train",
-		"railway",
 		"api",
-		"client"
+		"austria",
+		"bahn",
+		"bundesbahn",
+		"client",
+		"oebb",
+		"railway",
+		"train",
+		"öbb",
+		"österreichische"
 	],
-	"author": "Julius Tens <mail@juliustens.eu>",
 	"homepage": "https://github.com/juliuste/oebb",
-	"repository": "juliuste/oebb",
 	"bugs": "https://github.com/juliuste/oebb/issues",
-	"main": "./index.js",
+	"repository": "juliuste/oebb",
+	"license": "ISC",
+	"author": "Julius Tens <mail@juliustens.eu>",
 	"files": [
-		"index.js",
-		"lib"
+		"lib/*"
 	],
+	"main": "lib/index.js",
+	"scripts": {
+		"check-deps": "depcheck",
+		"fix": "eslint --fix lib",
+		"lint": "eslint lib",
+		"prepublishOnly": "npm test",
+		"test": "npm run lint && npm run check-deps && node test"
+	},
 	"dependencies": {
 		"cookie": "^0.3.1",
 		"got": "^9.1.0",
@@ -31,15 +38,17 @@
 		"randomatic": "^3.1.0"
 	},
 	"devDependencies": {
+		"depcheck": "^0.6.11",
+		"eslint": "^5.8.0",
+		"eslint-config-standard": "^12.0.0",
+		"eslint-plugin-import": "^2.14.0",
+		"eslint-plugin-node": "^8.0.0",
+		"eslint-plugin-promise": "^4.0.1",
+		"eslint-plugin-standard": "^4.0.0",
 		"moment-timezone": "^0.5.21",
 		"tape": "^4.9.1"
 	},
-	"scripts": {
-		"test": "node test.js",
-		"prepublishOnly": "npm test"
-	},
 	"engines": {
 		"node": ">=8"
-	},
-	"license": "ISC"
+	}
 }
