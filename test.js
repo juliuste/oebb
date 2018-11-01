@@ -26,7 +26,7 @@ tape('oebb.stations', async (t) => {
 tape('oebb.journeys', async (t) => {
 	t.plan(14)
 	const date = moment.tz('Europe/Vienna').add(2, 'days').set('hour', 8).startOf('hour').toDate()
-	const journeys = await oebb.journeys("8000261", "8103000", date) // München -> Wien
+	const journeys = await oebb.journeys('8000261', '8103000', date) // München -> Wien
 	t.ok(journeys.length >= 1, 'journeys length')
 	const journey = journeys[0]
 	t.ok(journey.type === 'journey', 'journey type')

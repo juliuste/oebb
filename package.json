@@ -25,8 +25,8 @@
 	"main": "lib/index.js",
 	"scripts": {
 		"check-deps": "depcheck",
-		"fix": "eslint --fix lib",
-		"lint": "eslint lib",
+		"fix": "eslint --fix lib test.js",
+		"lint": "eslint lib test.js",
 		"prepublishOnly": "npm test",
 		"test": "npm run lint && npm run check-deps && node test"
 	},
