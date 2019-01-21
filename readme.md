@@ -1,6 +1,6 @@
 # oebb
 
-Client for the [Austrian Federal Railways (ÖBB)](https://oebb.at/) API client. Inofficial, please ask ÖBB for permission before using this module in production. **Actually, there should be no need for projects like this since endpoints for state-owned public transportation operators should be open to the public. It's ~~2017~~ 2018. By the way: Even [Deutsche Bahn](http://www.bahn.de/) gets this now, and you don't ever want to be less progressive than them, because that would hurt their pride 😄.**
+Client for the [Austrian Federal Railways (ÖBB)](https://oebb.at/) API client. Inofficial, please ask ÖBB for permission before using this module in production. **Actually, there should be no need for projects like this since endpoints for state-owned public transportation operators should be open to the public. It's ~~2017, 2018~~ 2019. By the way: Even [Deutsche Bahn](http://www.bahn.de/) gets this now, and you don't ever want to be less progressive than them, because that would hurt their pride 😄.**
 
 *Still in progress*
 
