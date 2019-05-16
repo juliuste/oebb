@@ -31,7 +31,7 @@
 		"test": "npm run lint && npm run check-deps && node test"
 	},
 	"dependencies": {
-		"cookie": "^0.3.1",
+		"cookie": "^0.4.0",
 		"got": "^9.1.0",
 		"lodash": "^4.17.10",
 		"p-retry": "^2.0.0",
