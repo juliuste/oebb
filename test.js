@@ -7,10 +7,20 @@ const first = require('lodash/first')
 const last = require('lodash/last')
 const { DateTime } = require('luxon')
 const validate = require('validate-fptf')()
+const fptiTests = require('fpti-tests')
 const oebb = require('.')
+const pkg = require('./package.json')
 
-tape('stations', async t => {
-	const stations = await oebb.stations('Wien', { results: 4 })
+tape('fpti tests', async t => {
+	await t.doesNotReject(fptiTests.packageJson(pkg), 'valid package.json')
+	t.doesNotThrow(() => fptiTests.packageExports(oebb, ['stations.search', 'journeys']), 'valid module exports')
+	t.doesNotThrow(() => fptiTests.stationsSearchFeatures(oebb.stations.search.features, ['results']), 'valid stations.search features')
+	t.doesNotThrow(() => fptiTests.journeysFeatures(oebb.journeys.features, ['when', 'departureAfter', 'results', 'interval', 'transfers']), 'valid journeys features')
+	t.end()
+})
+
+tape('stations.search', async t => {
+	const stations = await oebb.stations.search('Wien', { results: 4 })
 	t.ok(stations.length === 4, 'stations length')
 	stations.forEach(station => {
 		t.doesNotThrow(() => validate(station), 'valid fptf')
