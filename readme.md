@@ -313,6 +313,11 @@ oebb.journeys(berlin, vienna, { when: new Date('2019-11-02T05:00:00+02:00'), res
 ]
 ```
 
+# See also
+
+- [oebb-hafas](https://github.com/juliuste/oebb-hafas/) - JavaScript client for the OEBB Hafas API. Has a broader set of methods to lookup timetable information, but doesn't contain prices
+- [db-prices](https://github.com/juliuste/db-prices/) - DB (german railways) price information
+
 ## Contributing
 
 If you found a bug or want to propose a feature, feel free to visit [the issues page](https://github.com/juliuste/oebb/issues).
