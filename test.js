@@ -3,10 +3,9 @@
 const tapeWithoutPromise = require('tape')
 const addPromiseSupport = require('tape-promise').default
 const tape = addPromiseSupport(tapeWithoutPromise)
-const isString = require('lodash/isString')
-const isDate = require('lodash/isDate')
-const isObject = require('lodash/isObject')
-const moment = require('moment-timezone')
+const first = require('lodash/first')
+const last = require('lodash/last')
+const { DateTime } = require('luxon')
 const validate = require('validate-fptf')()
 const oebb = require('.')
 
@@ -21,24 +20,41 @@ tape('stations', async t => {
 	t.ok(stations.find(({ name, meta }) => name === 'Wien' && meta === true), 'wien station')
 })
 
-tape('oebb.journeys', async (t) => {
-	t.plan(14)
-	const date = moment.tz('Europe/Vienna').add(2, 'days').set('hour', 8).startOf('hour').toDate()
-	const journeys = await oebb.journeys('8000261', '8103000', date) // München -> Wien
-	t.ok(journeys.length >= 1, 'journeys length')
-	const journey = journeys[0]
-	t.ok(journey.type === 'journey', 'journey type')
-	t.ok(isString(journey.id) && journey.id.length > 10, 'journey id')
-	t.ok(Array.isArray(journey.legs) && journey.legs.length >= 1, 'journey legs length')
-	const leg = journey.legs[0]
-	t.ok(leg.origin.type === 'station', 'journey leg origin type')
-	t.ok(isString(leg.origin.id) && leg.origin.id.length >= 6, 'journey leg origin id')
-	t.ok(leg.origin.name === 'München Hbf', 'journey leg origin name')
-	t.ok(leg.destination.type === 'station', 'journey leg destination type')
-	t.ok(isString(leg.destination.id) && leg.destination.id.length >= 6, 'journey leg destination id')
-	t.ok(leg.destination.name === 'Wien Hbf', 'journey leg destination name')
-	t.ok(isDate(leg.departure), 'journey leg departure')
-	t.ok(isDate(leg.arrival), 'journey leg arrival')
-	t.ok(+leg.departure < +leg.arrival, 'journey leg departure before arrival')
-	t.ok(isObject(leg.product), 'journey leg product')
+tape('journeys', async t => {
+	const berlin = '8011160'
+	const hamburg = '8002549'
+	const vienna = {
+		type: 'station',
+		id: '1190100',
+		name: 'Wien'
+	}
+	const when = DateTime.fromJSDate(new Date(), { zone: 'Europe/Vienna' }).plus({ days: 10 }).startOf('day').plus({ hours: 5 }).toJSDate()
+	const journeys = await oebb.journeys(berlin, vienna, { when })
+
+	t.ok(journeys.length === 5, 'number of journeys')
+	journeys.forEach(journey => {
+		t.doesNotThrow(() => validate(journey), 'valid fptf')
+		t.ok(first(journey.legs).origin.name.toLowerCase().includes('berlin'), 'origin')
+		t.ok(last(journey.legs).destination.name.toLowerCase().includes('wien'), 'destination')
+		journey.legs.forEach(leg => {
+			t.ok(leg.line.type === 'line', 'leg line')
+			t.doesNotThrow(() => validate(leg.line), 'valid fptf')
+		})
+	})
+
+	const directJourneys = await oebb.journeys(vienna, hamburg, { when, transfers: 0 })
+	t.ok(directJourneys.length === 0, 'number of direct journeys')
+
+	const twoTransferJourneys = await oebb.journeys(vienna, hamburg, { when, transfers: 2 })
+	t.ok(twoTransferJourneys.length > 0, 'number of 1- or 2-transfer journeys')
+
+	const fewJourneys = await oebb.journeys(berlin, vienna, { departureAfter: when, results: 2 })
+	t.ok(fewJourneys.length === 2, 'number of journeys')
+
+	const oneDayLater = DateTime.fromJSDate(when).plus({ days: 1 }).toJSDate()
+	const thirtySixHours = 36 * 60
+	const manyJourneys = await oebb.journeys(berlin, vienna, { when, interval: thirtySixHours })
+	t.ok(manyJourneys.length >= 10, 'number of journeys')
+	const journeysOneDayLater = manyJourneys.filter(j => +new Date(first(j.legs).departure) > +oneDayLater)
+	t.ok(journeysOneDayLater.length >= 2, 'number of journeys')
 })
