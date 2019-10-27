@@ -7,20 +7,18 @@ const isString = require('lodash/isString')
 const isDate = require('lodash/isDate')
 const isObject = require('lodash/isObject')
 const moment = require('moment-timezone')
+const validate = require('validate-fptf')()
 const oebb = require('.')
 
-// journeys("8000261", "8103000").then(console.log).catch(console.error)
-
-tape('oebb.stations', async (t) => {
-	t.plan(6)
-	const stations = await oebb.stations('Wien')
-	t.ok(stations.length >= 5, 'stations length')
-	const wien = stations.find((x) => x.name === 'Wien')
-	t.ok(wien.type === 'station', 'station type')
-	t.ok(isString(wien.id) && wien.id.length >= 6, 'station id')
-	t.ok(wien.meta, 'station meta')
-	t.ok(wien.coordinates.longitude > 16 && wien.coordinates.longitude < 17, 'station coordinates longitude')
-	t.ok(wien.coordinates.latitude > 48 && wien.coordinates.latitude < 49, 'station coordinates latitude')
+tape('stations', async t => {
+	const stations = await oebb.stations('Wien', { results: 4 })
+	t.ok(stations.length === 4, 'stations length')
+	stations.forEach(station => {
+		t.doesNotThrow(() => validate(station), 'valid fptf')
+		t.ok(station.location.longitude > 16 && station.location.longitude < 17, 'station location longitude')
+		t.ok(station.location.latitude > 48 && station.location.latitude < 49, 'station location latitude')
+	})
+	t.ok(stations.find(({ name, meta }) => name === 'Wien' && meta === true), 'wien station')
 })
 
 tape('oebb.journeys', async (t) => {
