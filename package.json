@@ -1,6 +1,6 @@
 {
 	"name": "oebb",
-	"version": "0.0.2",
+	"version": "1.0.0",
 	"description": "Austrian Federal Railways (ÖBB) API client.",
 	"keywords": [
 		"api",
@@ -12,6 +12,7 @@
 		"railway",
 		"train",
 		"öbb",
+		"österreich",
 		"österreichische"
 	],
 	"homepage": "https://github.com/juliuste/oebb",
