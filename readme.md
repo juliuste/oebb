@@ -1,6 +1,6 @@
 # oebb
 
-Client for the [Austrian Federal Railways (ÖBB)](https://oebb.at/) API. Inofficial, using endpoints by *ÖBB*. Ask them for permission before using this module in production. **Actually, there should be no need for projects like this since endpoints for state-owned public transportation operators should be open to the public. It's ~~2017, 2018~~ 2019. By the way: Even [Deutsche Bahn](http://www.bahn.de/) gets this now, and you don't ever want to be less progressive than them, because that would hurt their pride 😄.**
+Client for the [Austrian Federal Railways (ÖBB)](https://oebb.at/) API. Inofficial, using endpoints by *ÖBB*. Ask them for permission before using this module in production. **Actually, there should be no need for projects like this since endpoints for state-owned public transportation operators should be open to the public. It's ~~2017, 2018, 2019~~ 2020. By the way: Even [Deutsche Bahn](http://www.bahn.de/) gets this now, and you don't ever want to be less progressive than them, because that would hurt their pride 😄.**
 
 This module conforms to the [FPTI-JS `0.3.2` standard](https://github.com/public-transport/fpti-js/tree/0.3.2) for JavaScript public transportation modules.
 
