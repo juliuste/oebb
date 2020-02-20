@@ -33,7 +33,7 @@
 	},
 	"dependencies": {
 		"fpti-util": "^0.1.0",
-		"got": "^9.6.0",
+		"got": "^10.6.0",
 		"lodash": "^4.17.15",
 		"luxon": "^1.19.3",
 		"query-string": "^6.8.3"
