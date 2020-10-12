@@ -6,7 +6,6 @@ This module conforms to the [FPTI-JS `0.3.2` standard](https://github.com/public
 
 [![npm version](https://img.shields.io/npm/v/oebb.svg)](https://www.npmjs.com/package/oebb)
 [![Build Status](https://travis-ci.org/juliuste/oebb.svg?branch=master)](https://travis-ci.org/juliuste/oebb)
-[![Greenkeeper badge](https://badges.greenkeeper.io/juliuste/oebb.svg)](https://greenkeeper.io/)
 [![license](https://img.shields.io/github/license/juliuste/oebb.svg?style=flat)](license)
 [![fpti-js version](https://fpti-js.badges.juliustens.eu/badge/juliuste/oebb)](https://fpti-js.badges.juliustens.eu/link/juliuste/oebb)
 
